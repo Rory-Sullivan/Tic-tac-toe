@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tick Tack Toe</title>
   <link rel="stylesheet" href="styles/style.css">
+  <link rel="shortcut icon" href="">
 </head>
+
 <body>
   <h1 id='header'>Rory's Tick Tack Toe Game</h1>
 
@@ -15,29 +18,31 @@
 
   <section id='game'>
     <div id='buttons'>
-      <button id='b1'></button>
-      <button id='b2'></button>
-      <button id='b3'></button>
-      <button id='b4'></button>
-      <button id='b5'></button>
-      <button id='b6'></button>
-      <button id='b7'></button>
-      <button id='b8'></button>
-      <button id='b9'></button>
+      <button value=0></button>
+      <button value=1></button>
+      <button value=2></button>
+      <button value=3></button>
+      <button value=4></button>
+      <button value=5></button>
+      <button value=6></button>
+      <button value=7></button>
+      <button value=8></button>
     </div>
 
     <div id='metrics'>
-      <ul>
+      <h4 id='winner'></h4>
+      <!-- <ul>
         <li>Player 1 wins: 10</li>
         <li>Player 2 wins: 5</li>
         <li>Draws: 0</li>
         <li>Games played: 15</li>
-      </ul>
+      </ul> -->
 
     </div>
   </section>
 
-  <script type='text/javascript' src='scripts\MAIN.js'></script>
+  <script src='scripts\MAIN.js' type='module'></script>
 
 </body>
+
 </html>
