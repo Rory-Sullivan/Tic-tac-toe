@@ -1,0 +1,28 @@
+/* Main header */
+h1#header {
+  background: palegreen;
+  text-align: center;
+  padding: .5em;
+}
+
+/* Game section */
+section#game {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+div#buttons {
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 50vw;
+  min-width: 10em;
+  height: 50vw;
+  min-height: 10em;
+}
+
+/* Metrics */
+div#metrics {
+  margin: auto;
+}
