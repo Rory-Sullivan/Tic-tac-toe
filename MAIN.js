@@ -49,5 +49,11 @@ function pressed(event) {
         'winner'
       ).innerHTML = `Player ${game.winner} wins.`;
     }
+
+    // Update the metrics
+    document.getElementById('p1Wins').innerHTML = game.p1Wins;
+    document.getElementById('p2Wins').innerHTML = game.p2Wins;
+    document.getElementById('draws').innerHTML = game.draws;
+    document.getElementById('rounds').innerHTML = game.rounds;
   }
 }

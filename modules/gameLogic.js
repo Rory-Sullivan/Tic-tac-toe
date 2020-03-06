@@ -27,6 +27,7 @@ function makeMove(game, position) {
 
   // If there is a winner update our win counters and return.
   if (game.winner !== -1) {
+    game.rounds++;
     if (game.winner === 0) {
       game.draws++;
     } else {

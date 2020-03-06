@@ -2,7 +2,7 @@
 h1#header {
   background: palegreen;
   text-align: center;
-  padding: .5em;
+  padding: 0.5em;
 }
 
 /* Game section */
@@ -13,16 +13,30 @@ section#game {
 
 /* Buttons */
 div#buttons {
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
   width: 50vw;
   min-width: 10em;
   height: 50vw;
   min-height: 10em;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+div#buttons button {
+  width: initial;
+  height: initial;
+  text-align: center;
+  font-size: xx-large;
 }
 
 /* Metrics */
 div#metrics {
   margin: auto;
+  height: initial;
+  width: initial;
+}
+
+div#metrics var {
+  font-style: normal;
 }
