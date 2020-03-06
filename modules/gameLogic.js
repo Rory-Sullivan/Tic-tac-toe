@@ -1,7 +1,6 @@
 // Function for making a move and checking if there is a winner.
 
-export function makeMove(gameBoard, playerNo, position) {
-
+function makeMove(gameBoard, playerNo, position) {
   // Make the move.
   gameBoard[position] = playerNo;
 
@@ -14,15 +13,15 @@ export function makeMove(gameBoard, playerNo, position) {
   }
 
   // Check if it was a winning move.
-  let check1
-  let check2
-  let check3
+  let check1;
+  let check2;
+  let check3;
 
   // Check rows
   for (let i = 0; i < 3; i++) {
     check1 = gameBoard[i * 3];
-    check2 = gameBoard[(i * 3) + 1];
-    check3 = gameBoard[(i * 3) + 2];
+    check2 = gameBoard[i * 3 + 1];
+    check3 = gameBoard[i * 3 + 2];
 
     if (checkThree()) {
       return [true, playerNo];
@@ -63,3 +62,6 @@ export function makeMove(gameBoard, playerNo, position) {
   }
   return [false, playerNo];
 }
+
+//Exports
+export { makeMove };

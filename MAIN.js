@@ -1,7 +1,5 @@
 // Imports
-import {
-  makeMove
-} from "./gameLogic.js";
+import { makeMove } from './modules/gameLogic.js';
 
 let winner = false;
 let gameBoard = [0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -12,7 +10,7 @@ function pressed(event) {
   let position = event.target.value;
   event.target.disabled = true;
 
-  let symbol
+  let symbol;
 
   if (playerNo == 1) {
     symbol = 'X';
