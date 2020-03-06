@@ -21,6 +21,10 @@ for (let button of gameButtons) {
   button.onclick = pressed;
 }
 
+// Attach reset button to function.
+let resetButton = document.getElementById('reset');
+resetButton.onclick = reset;
+
 // Make a move and check for winner when a game button is pressed.
 function pressed(event) {
   let position = event.target.value;
@@ -55,5 +59,23 @@ function pressed(event) {
     document.getElementById('p2Wins').innerHTML = game.p2Wins;
     document.getElementById('draws').innerHTML = game.draws;
     document.getElementById('rounds').innerHTML = game.rounds;
+  }
+}
+
+// Reset game when reset button is pushed.
+function reset() {
+  game.board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  game.moves = 0;
+  game.winner = -1;
+
+  if (game.playerTurn == 1) {
+    game.playerTurn = 2;
+  } else {
+    game.playerTurn = 1;
+  }
+
+  for (let button of gameButtons) {
+    button.innerHTML = null;
+    button.disabled = false;
   }
 }

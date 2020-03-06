@@ -40,3 +40,10 @@ div#metrics {
 div#metrics var {
   font-style: normal;
 }
+
+button#reset {
+  display: block;
+  margin: auto;
+  background-color: lawngreen;
+  border-radius: 15px;
+}
