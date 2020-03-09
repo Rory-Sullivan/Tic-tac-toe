@@ -26,6 +26,14 @@
       </div>
 
       <div id="metrics">
+        <label for="gameMode">Mode:</label>
+        <select name="gameMode" id="gameMode">
+          <option value="0">Two player</option>
+          <option value="1" selected>Easy</option>
+          <option value="2">Medium</option>
+          <option value="3">Hard (impossible to win)</option>
+        </select>
+
         <h4 id="playerStatus">Player 1</h4>
         <ul>
           <li>Player 1 wins: <var id="p1Wins">0</var></li>

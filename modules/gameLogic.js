@@ -1,6 +1,6 @@
-/*
-Controls game flow for our Tic-tac-toe game.
-*/
+/**
+ * Controls game flow for our Tic-tac-toe game.
+ */
 
 // Our game object is below for reference.
 // let game = {
