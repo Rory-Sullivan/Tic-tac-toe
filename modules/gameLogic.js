@@ -1,5 +1,7 @@
-// Function for making a move and checking if there is a winner.
-//
+/*
+Controls game flow for our Tic-tac-toe game.
+*/
+
 // Our game object is below for reference.
 // let game = {
 //   board: [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -25,6 +27,14 @@ function makeMove(game, position) {
   // Check if it is a winning move.
   checkForWinner();
 
+  // Swap players.
+  // Note we must do this after checking for a winner.
+  if (game.playerTurn == 1) {
+    game.playerTurn = 2;
+  } else {
+    game.playerTurn = 1;
+  }
+
   // If there is a winner update our win counters and return.
   if (game.winner !== -1) {
     game.rounds++;
@@ -37,14 +47,8 @@ function makeMove(game, position) {
   }
 
   // If there is no winner.
-  if (game.playerTurn == 1) {
-    game.playerTurn = 2;
-  } else {
-    game.playerTurn = 1;
-  }
   return false;
 
-  // Function for checking if there is a winner.
   function checkForWinner() {
     let check1;
     let check2;
@@ -96,7 +100,6 @@ function makeMove(game, position) {
     return false;
   }
 
-  // Function for checking if three values are equal.
   function checkThree(check1, check2, check3) {
     if (check1 == check2 && check1 == check3 && check1 == game.playerTurn) {
       return true;

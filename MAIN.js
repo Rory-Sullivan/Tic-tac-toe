@@ -1,3 +1,7 @@
+/*
+Controls event listeners and display for our Tic-tac-toe game.
+*/
+
 // Imports
 import { makeMove } from './modules/gameLogic.js';
 
@@ -47,11 +51,11 @@ function pressed(event) {
     }
 
     if (game.winner === 0) {
-      document.getElementById('winner').innerHTML = 'Draw';
+      document.getElementById('playerStatus').innerHTML = 'Draw!';
     } else {
       document.getElementById(
-        'winner'
-      ).innerHTML = `Player ${game.winner} wins.`;
+        'playerStatus'
+      ).innerHTML = `Player ${game.winner} wins!`;
     }
 
     // Update the metrics
@@ -59,20 +63,18 @@ function pressed(event) {
     document.getElementById('p2Wins').innerHTML = game.p2Wins;
     document.getElementById('draws').innerHTML = game.draws;
     document.getElementById('rounds').innerHTML = game.rounds;
+  } else {
+    document.getElementById(
+      'playerStatus'
+    ).innerHTML = `Player ${game.playerTurn}`;
   }
 }
 
-// Reset game when reset button is pushed.
+// Reset game when reset button is pressed.
 function reset() {
   game.board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   game.moves = 0;
   game.winner = -1;
-
-  if (game.playerTurn == 1) {
-    game.playerTurn = 2;
-  } else {
-    game.playerTurn = 1;
-  }
 
   for (let button of gameButtons) {
     button.innerHTML = null;
