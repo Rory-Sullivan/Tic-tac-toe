@@ -1,4 +1,4 @@
-# Tick-Tack-Toe
+# Tic-tac-toe
 
-A tick tack toe web application. <br>
-https://rory-sullivan.github.io/Tick-Tack-Toe/
+A tic-tac-toe web application. <br>
+https://rory-sullivan.github.io/Tic-Tac-Toe/
