@@ -17,95 +17,68 @@
 // };
 
 function makeMove(game, position) {
-  // Make the move.
-  game.board[position] = game.playerTurn;
+    // Make the move.
+    game.board[position] = game.playerTurn;
 
-  // Iterate move count.
-  // Do this before checking for a winner so that we can check for a draw.
-  game.moves++;
+    // Iterate move count.
+    // Do this before checking for a winner so that we can check for a draw.
+    game.moves++;
 
-  // Check if it is a winning move.
-  checkForWinner();
+    // Check if it is a winning move.
+    checkForWinner();
 
-  // Swap players.
-  // Note we must do this after checking for a winner.
-  if (game.playerTurn == 1) {
-    game.playerTurn = 2;
-  } else {
-    game.playerTurn = 1;
-  }
-
-  // If there is a winner update our win counters and return.
-  if (game.winner !== -1) {
-    game.rounds++;
-    if (game.winner === 0) {
-      game.draws++;
+    // Swap players.
+    // Note we must do this after checking for a winner.
+    if (game.playerTurn == 1) {
+        game.playerTurn = 2;
     } else {
-      game[`p${game.winner}Wins`]++;
+        game.playerTurn = 1;
     }
-    return true;
-  }
 
-  // If there is no winner.
-  return false;
-
-  function checkForWinner() {
-    let check1;
-    let check2;
-    let check3;
-
-    // Check rows
-    for (let i = 0; i < 3; i++) {
-      check1 = game.board[i * 3];
-      check2 = game.board[i * 3 + 1];
-      check3 = game.board[i * 3 + 2];
-      if (checkThree(check1, check2, check3)) {
-        game.winner = game.playerTurn;
+    // If there is a winner update our win counters and return.
+    if (game.winner !== -1) {
+        game.rounds++;
+        if (game.winner === 0) {
+            game.draws++;
+        } else {
+            game[`p${game.winner}Wins`]++;
+        }
         return true;
-      }
     }
 
-    // Check columns.
-    for (let i = 0; i < 3; i++) {
-      check1 = game.board[i];
-      check2 = game.board[i + 3];
-      check3 = game.board[i + 6];
-      if (checkThree(check1, check2, check3)) {
-        game.winner = game.playerTurn;
-        return true;
-      }
-    }
-
-    // Check Diagonals.
-    check1 = game.board[0];
-    check2 = game.board[4];
-    check3 = game.board[8];
-    if (checkThree(check1, check2, check3)) {
-      game.winner = game.playerTurn;
-      return true;
-    }
-    check1 = game.board[2];
-    check2 = game.board[4];
-    check3 = game.board[6];
-    if (checkThree(check1, check2, check3)) {
-      game.winner = game.playerTurn;
-      return true;
-    }
-
-    // Check if it is a draw.
-    if (game.moves === 9) {
-      game.winner = 0;
-      return true;
-    }
+    // If there is no winner.
     return false;
-  }
 
-  function checkThree(check1, check2, check3) {
-    if (check1 == check2 && check1 == check3 && check1 == game.playerTurn) {
-      return true;
+    function checkForWinner() {
+        let check1;
+        let check2;
+        let check3;
+
+        // Check rows, columns and diagonals for a winner.
+        for (let set of game.getAll()) {
+            check1 = set[0];
+            check2 = set[1];
+            check3 = set[2];
+            if (checkThree(check1, check2, check3)) {
+                game.winner = game.playerTurn;
+                return true;
+            }
+        }
+
+        // Check if it is a draw.
+        if (game.moves === 9) {
+            game.winner = 0;
+            return true;
+        }
+        return false;
     }
-    return false;
-  }
+
+    function checkThree(check1, check2, check3) {
+        if (check1 == check2 && check1 == check3 && check1 == game.playerTurn) {
+            return true;
+        }
+        return false;
+    }
 }
 
 //Exports
