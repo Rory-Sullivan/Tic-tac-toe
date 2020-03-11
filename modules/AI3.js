@@ -4,7 +4,6 @@
  * This AI will play perfectly, it cannot be beaten you can only draw.
  */
 import { AI1_Move } from './AI1.js';
-import { checkForWinner } from './gameLogic.js';
 import { findNearComplete } from './AI2.js';
 
 // Our game object is below for reference.
@@ -29,6 +28,16 @@ function AI3_Move(game) {
     if (game.moves == 0) {
         // Make a random move.
         return AI1_Move(game);
+    } else if (game.moves === 2) {
+        // If centre is open take it.
+        if (game.board[4] === 0) {
+            return 4;
+        }
+
+        // Else we can play anywhere.
+        else {
+            return AI1_Move(game);
+        }
     }
 
     // User starting.
@@ -85,7 +94,7 @@ function AI3_Move(game) {
             return randMoveFromList([0, 6]);
         }
 
-        // Otherwise play an edge.
+        // Otherwise play an edge if one is available.
         else {
             let emptyEdges = [];
             if (game.board[1] === 0) {
@@ -100,7 +109,19 @@ function AI3_Move(game) {
             if (game.board[7] === 0) {
                 emptyEdges.push(7);
             }
-            return randMoveFromList(emptyEdges);
+
+            if (emptyEdges.length !== 0) {
+                return randMoveFromList(emptyEdges);
+            }
+
+            // Otherwise play any available move.
+            else {
+                for (let i = 0; i < 9; i++) {
+                    if (game.board[i] === 0) {
+                        return i;
+                    }
+                }
+            }
         }
     }
 
