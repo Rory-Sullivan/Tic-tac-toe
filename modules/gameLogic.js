@@ -25,7 +25,7 @@ function makeMove(game, position) {
     game.moves++;
 
     // Check if it is a winning move.
-    checkForWinner();
+    checkForWinner(game);
 
     // Swap players.
     // Note we must do this after checking for a winner.
@@ -48,30 +48,30 @@ function makeMove(game, position) {
 
     // If there is no winner.
     return false;
+}
 
-    function checkForWinner() {
-        let check1;
-        let check2;
-        let check3;
+function checkForWinner(game) {
+    let check1;
+    let check2;
+    let check3;
 
-        // Check rows, columns and diagonals for a winner.
-        for (let set of game.getAll()) {
-            check1 = set[0];
-            check2 = set[1];
-            check3 = set[2];
-            if (checkThree(check1, check2, check3)) {
-                game.winner = game.playerTurn;
-                return true;
-            }
-        }
-
-        // Check if it is a draw.
-        if (game.moves === 9) {
-            game.winner = 0;
+    // Check rows, columns and diagonals for a winner.
+    for (let set of game.getAll()) {
+        check1 = set[0];
+        check2 = set[1];
+        check3 = set[2];
+        if (checkThree(check1, check2, check3)) {
+            game.winner = game.playerTurn;
             return true;
         }
-        return false;
     }
+
+    // Check if it is a draw.
+    if (game.moves === 9) {
+        game.winner = 0;
+        return true;
+    }
+    return false;
 
     function checkThree(check1, check2, check3) {
         if (check1 == check2 && check1 == check3 && check1 == game.playerTurn) {
@@ -82,4 +82,4 @@ function makeMove(game, position) {
 }
 
 //Exports
-export { makeMove };
+export { makeMove, checkForWinner };

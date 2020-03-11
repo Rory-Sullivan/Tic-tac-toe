@@ -6,6 +6,7 @@ Controls event listeners and display for our Tic-tac-toe game.
 import { makeMove } from './modules/gameLogic.js';
 import { AI1_Move } from './modules/AI1.js';
 import { AI2_Move } from './modules/AI2.js';
+import { AI3_Move } from './modules/AI3.js';
 
 // Attach game buttons to function.
 let gameButtons = document.querySelectorAll('#buttons button');
@@ -133,6 +134,8 @@ function makeAIMove() {
         position = AI1_Move(game);
     } else if (game.mode === 2) {
         position = AI2_Move(game);
+    } else if (game.mode === 3) {
+        position = AI3_Move(game);
     }
 
     // Trigger the appropriate button.
