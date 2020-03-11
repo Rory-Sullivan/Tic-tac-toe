@@ -28,6 +28,7 @@ let game = {
     moves: 0,
     winner: -1, // Value for testing if there is a winner.
     // -1: no winner, 0: draw, 1: player1 wins, 2: player2 wins.
+    winningPositions: [],
     playerTurn: 1, // Player 1 will start.
     p1Wins: 0,
     p2Wins: 0,
@@ -99,6 +100,9 @@ function pressed(event) {
         for (let button of gameButtons) {
             button.disabled = true;
         }
+        for (let position of game.winningPositions) {
+            gameButtons[position].style.color = 'red';
+        }
 
         if (game.winner === 0) {
             document.getElementById('playerStatus').innerHTML = 'Draw!';
@@ -165,6 +169,7 @@ function reset() {
     game.board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     game.moves = 0;
     game.winner = -1;
+    game.winningPositions = [];
 
     document.getElementById(
         'playerStatus'
@@ -173,6 +178,7 @@ function reset() {
     for (let button of gameButtons) {
         button.innerHTML = null;
         button.disabled = false;
+        button.style.color = null;
     }
 
     // Make an AI move if the computer is starting.

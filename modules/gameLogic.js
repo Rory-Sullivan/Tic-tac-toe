@@ -56,14 +56,35 @@ function checkForWinner(game) {
     let check3;
 
     // Check rows, columns and diagonals for a winner.
+    let i = 0;
     for (let set of game.getAll()) {
         check1 = set[0];
         check2 = set[1];
         check3 = set[2];
         if (checkThree(check1, check2, check3)) {
             game.winner = game.playerTurn;
+
+            if (i === 0) {
+                game.winningPositions = [0, 1, 2];
+            } else if (i === 1) {
+                game.winningPositions = [3, 4, 5];
+            } else if (i === 2) {
+                game.winningPositions = [6, 7, 8];
+            } else if (i === 3) {
+                game.winningPositions = [0, 3, 6];
+            } else if (i === 4) {
+                game.winningPositions = [1, 4, 7];
+            } else if (i === 5) {
+                game.winningPositions = [2, 5, 8];
+            } else if (i === 6) {
+                game.winningPositions = [0, 4, 8];
+            } else if (i === 7) {
+                game.winningPositions = [2, 4, 6];
+            }
+
             return true;
         }
+        i++;
     }
 
     // Check if it is a draw.
