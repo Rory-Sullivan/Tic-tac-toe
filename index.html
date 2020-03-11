@@ -1,67 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tick Tack Toe</title>
-    <link rel="stylesheet" href="styles/style.css" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="icons/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="icons/favicon-16x16.png"
-    />
-    <link rel="manifest" href="icons/site.webmanifest" />
-    <link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#5bbad5" />
-    <meta name="msapplication-TileColor" content="#2d89ef" />
-    <meta name="theme-color" content="#ffffff" />
-  </head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tick Tack Toe</title>
+        <link rel="stylesheet" href="styles/style.css" />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="icons/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="icons/favicon-16x16.png"
+        />
+        <link rel="manifest" href="icons/site.webmanifest" />
+        <link
+            rel="mask-icon"
+            href="icons/safari-pinned-tab.svg"
+            color="#5bbad5"
+        />
+        <meta name="msapplication-TileColor" content="#2d89ef" />
+        <meta name="theme-color" content="#ffffff" />
+    </head>
 
-  <body>
-    <h1 id="header">Rory's Tick Tack Toe Game</h1>
+    <body>
+        <h1 id="header">Rory's Tick Tack Toe Game</h1>
 
-    <section id="settings"></section>
+        <section id="settings"></section>
 
-    <section id="game">
-      <div id="buttons">
-        <button id="butt0" value="0"></button>
-        <button id="butt1" value="1"></button>
-        <button id="butt2" value="2"></button>
-        <button id="butt3" value="3"></button>
-        <button id="butt4" value="4"></button>
-        <button id="butt5" value="5"></button>
-        <button id="butt6" value="6"></button>
-        <button id="butt7" value="7"></button>
-        <button id="butt8" value="8"></button>
-      </div>
+        <section id="game">
+            <div id="buttons">
+                <div id="board">
+                    <button id="butt0" value="0"></button>
+                    <button id="butt1" value="1"></button>
+                    <button id="butt2" value="2"></button>
+                    <button id="butt3" value="3"></button>
+                    <button id="butt4" value="4"></button>
+                    <button id="butt5" value="5"></button>
+                    <button id="butt6" value="6"></button>
+                    <button id="butt7" value="7"></button>
+                    <button id="butt8" value="8"></button>
+                </div>
+                <button id="reset">Play again</button>
+            </div>
 
-      <div id="metrics">
-        <label for="gameMode">Mode:</label>
-        <select name="gameMode" id="gameMode">
-          <option value="0">Two player</option>
-          <option value="1" selected>Easy</option>
-          <option value="2">Medium</option>
-          <option value="3">Hard (impossible to win)</option>
-        </select>
+            <div id="metrics">
+                <h4 id="playerStatus">Player 1</h4>
 
-        <h4 id="playerStatus">Player 1</h4>
-        <ul>
-          <li>Player 1 wins: <var id="p1Wins">0</var></li>
-          <li>Player 2 wins: <var id="p2Wins">0</var></li>
-          <li>Draws: <var id="draws">0</var></li>
-          <li>Games played: <var id="rounds">0</var></li>
-        </ul>
-        <button id="reset">Reset</button>
-      </div>
-    </section>
+                <label for="gameMode">Mode:</label>
+                <select name="gameMode" id="gameMode">
+                    <option value="0">Two player</option>
+                    <option value="1" selected>Easy</option>
+                    <option value="2">Medium</option>
+                    <option value="3">Hard (impossible to win)</option>
+                </select>
 
-    <script type="module" src="MAIN.js"></script>
-  </body>
+                <ul>
+                    <li>Player 1 wins: <var id="p1Wins">0</var></li>
+                    <li>Player 2 wins: <var id="p2Wins">0</var></li>
+                    <li>Draws: <var id="draws">0</var></li>
+                    <li>Games played: <var id="rounds">0</var></li>
+                </ul>
+            </div>
+        </section>
+
+        <script type="module" src="MAIN.js"></script>
+    </body>
 </html>

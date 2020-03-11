@@ -9,7 +9,7 @@ import { AI2_Move } from './modules/AI2.js';
 import { AI3_Move } from './modules/AI3.js';
 
 // Attach game buttons to function.
-let gameButtons = document.querySelectorAll('#buttons button');
+let gameButtons = document.querySelectorAll('#board button');
 for (let button of gameButtons) {
     button.onclick = pressed;
 }

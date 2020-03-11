@@ -1,49 +1,59 @@
+/* General */
+button:focus {
+    outline: 0;
+}
+
 /* Main header */
 h1#header {
-  background: palegreen;
-  text-align: center;
-  padding: 0.5em;
+    background: palegreen;
+    text-align: center;
+    padding: 0.5em;
 }
 
 /* Game section */
 section#game {
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 /* Buttons */
 div#buttons {
-  width: 50vw;
-  min-width: 10em;
-  height: 50vw;
-  min-height: 10em;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+    margin: auto;
+}
+
+div#board {
+    width: 50vw;
+    min-width: 10em;
+    max-width: 90vh;
+    height: 50vw;
+    min-height: 10em;
+    max-height: 90vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
 }
 
 div#buttons button {
-  width: initial;
-  height: initial;
-  text-align: center;
-  font-size: xx-large;
+    width: initial;
+    height: initial;
+    text-align: center;
+    font-size: xx-large;
 }
 
 /* Metrics */
 div#metrics {
-  margin: auto;
-  height: initial;
-  width: initial;
+    margin: auto;
+    height: initial;
+    width: initial;
 }
 
 div#metrics var {
-  font-style: normal;
+    font-style: normal;
 }
 
 button#reset {
-  display: block;
-  margin: auto;
-  background-color: lawngreen;
-  border-radius: 15px;
+    display: block;
+    margin: 1em auto;
+    background-color: lawngreen;
+    border-radius: 15px;
 }
