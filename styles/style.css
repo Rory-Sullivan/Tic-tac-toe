@@ -1,11 +1,14 @@
 /* General */
+html {
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+}
 button:focus {
     outline: 0;
 }
 
 /* Main header */
 h1#header {
-    background: palegreen;
+    background: paleturquoise;
     text-align: center;
     padding: 0.5em;
 }
@@ -23,21 +26,75 @@ div#buttons {
 
 div#board {
     width: 50vw;
-    min-width: 10em;
-    max-width: 90vh;
+    min-width: 300px;
+    max-width: 80vh;
     height: 50vw;
-    min-height: 10em;
-    max-height: 90vh;
+    min-height: 300px;
+    max-height: 80vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
 }
 
-div#buttons button {
+div#board button {
     width: initial;
     height: initial;
     text-align: center;
-    font-size: xx-large;
+    font-size: 4em;
+    color: black;
+    background-color: white;
+    border: none;
+}
+
+div#board #butt0 {
+    border-right: black solid 3px;
+    border-bottom: black solid 3px;
+}
+div#board #butt1 {
+    border-right: black solid 3px;
+    border-bottom: black solid 3px;
+    border-left: black solid 3px;
+}
+div#board #butt2 {
+    border-left: black solid 3px;
+    border-bottom: black solid 3px;
+}
+div#board #butt3 {
+    border-right: black solid 3px;
+    border-top: black solid 3px;
+    border-bottom: black solid 3px;
+}
+div#board #butt4 {
+    border-right: black solid 3px;
+    border-left: black solid 3px;
+    border-top: black solid 3px;
+    border-bottom: black solid 3px;
+}
+div#board #butt5 {
+    border-left: black solid 3px;
+    border-top: black solid 3px;
+    border-bottom: black solid 3px;
+}
+div#board #butt6 {
+    border-right: black solid 3px;
+    border-top: black solid 3px;
+}
+div#board #butt7 {
+    border-right: black solid 3px;
+    border-left: black solid 3px;
+    border-top: black solid 3px;
+}
+div#board #butt8 {
+    border-left: black solid 3px;
+    border-top: black solid 3px;
+}
+
+button#reset {
+    display: block;
+    margin: 1em auto;
+    background-color: paleturquoise;
+    border-radius: 15px;
+    font-size: 1.8em;
 }
 
 /* Metrics */
@@ -51,9 +108,6 @@ div#metrics var {
     font-style: normal;
 }
 
-button#reset {
-    display: block;
-    margin: 1em auto;
-    background-color: lawngreen;
-    border-radius: 15px;
+div#metric #p1Wins {
+    text-align: right;
 }

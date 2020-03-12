@@ -99,9 +99,14 @@ function pressed(event) {
         // If there is a winner.
         for (let button of gameButtons) {
             button.disabled = true;
+            button.style.color = 'grey';
         }
         for (let position of game.winningPositions) {
-            gameButtons[position].style.color = 'red';
+            if (game.winner === 1) {
+                gameButtons[position].style.color = 'lime';
+            } else if (game.winner === 2) {
+                gameButtons[position].style.color = 'red';
+            }
         }
 
         if (game.winner === 0) {
