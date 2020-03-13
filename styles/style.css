@@ -1,7 +1,9 @@
 /* General */
-html {
+body {
     font-family: 'Trebuchet MS', Helvetica, sans-serif;
+    margin: 0;
 }
+
 button:focus {
     outline: 0;
 }
@@ -10,7 +12,7 @@ button:focus {
 h1#header {
     background: paleturquoise;
     text-align: center;
-    padding: 0.5em;
+    padding: 1em 0.75em;
 }
 
 /* Game section */
@@ -95,19 +97,24 @@ button#reset {
     background-color: paleturquoise;
     border-radius: 15px;
     font-size: 1.8em;
+    padding: 0.2em;
+    font-family: inherit;
 }
 
 /* Metrics */
 div#metrics {
-    margin: auto;
+    margin: auto auto;
     height: initial;
     width: initial;
+    padding-bottom: 7em;
+    overflow-x: visible;
 }
 
-div#metrics var {
-    font-style: normal;
+div#metrics #playerStatus {
+    margin-top: 0;
+    font-size: 1.3em;
 }
 
-div#metric #p1Wins {
-    text-align: right;
+div#metrics table {
+    margin-top: 1.5em;
 }

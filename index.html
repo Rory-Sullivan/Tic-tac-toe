@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Tick Tack Toe</title>
+        <title>Tic-Tac-Toe</title>
         <link rel="stylesheet" href="styles/style.css" />
         <link
             rel="apple-touch-icon"
@@ -35,8 +35,6 @@
     <body>
         <h1 id="header">Rory's Tic-Tac-Toe Game</h1>
 
-        <section id="settings"></section>
-
         <section id="game">
             <div id="buttons">
                 <div id="board">
@@ -59,17 +57,31 @@
                 <label for="gameMode">Mode:</label>
                 <select name="gameMode" id="gameMode">
                     <option value="0">Two player</option>
-                    <option value="1">Easy</option>
-                    <option value="2" selected>Medium</option>
+                    <option value="1" selected>Easy</option>
+                    <option value="2">Medium</option>
                     <option value="3">Hard</option>
                 </select>
 
-                <ul>
-                    <li>Player 1 wins: <var id="p1Wins">0</var></li>
-                    <li>Player 2 wins: <var id="p2Wins">0</var></li>
-                    <li>Draws: <var id="draws">0</var></li>
-                    <li>Games played: <var id="rounds">0</var></li>
-                </ul>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Player 1 wins:</td>
+                            <td id="p1Wins">0</td>
+                        </tr>
+                        <tr>
+                            <td>Player 2 wins:</td>
+                            <td id="p2Wins">0</td>
+                        </tr>
+                        <tr>
+                            <td>Draws:</td>
+                            <td id="draws">0</td>
+                        </tr>
+                        <tr>
+                            <td>Games played:</td>
+                            <td id="rounds">0</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 
