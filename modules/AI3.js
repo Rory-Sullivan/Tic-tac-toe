@@ -1,27 +1,17 @@
 /**
  * Artificial intelligence for the user to play against.
  * AI3 (HARD)
- * This AI will play perfectly, it cannot be beaten you can only draw.
+ * This AI plays so that it cannot be beaten.  For more info check the
+ * documentation.
+ */
+/**
+ * TODO: Write documentation for this.
  */
 import { AI1_Move } from './AI1.js';
 import { findNearComplete } from './AI2.js';
 
-// Our game object is below for reference.
-// let game = {
-//   board: [0, 0, 0, 0, 0, 0, 0, 0, 0],
-//   moves: 0,
-//   winner: -1, // Value for testing if there is a winner.
-//   // -1: no winner, 0: draw, 1: player1 wins, 2: player2 wins.
-//   playerTurn: 1, // Player 1 will start.
-//   players: 2, // Number of user players (1 or 2).
-//   p1Wins: 0,
-//   p2Wins: 0,
-//   draws: 0,
-//   rounds: 0
-// };
-
 /**
- * Move function for AI3 (Hard)
+ * Move function for AI3 (HARD)
  */
 function AI3_Move(game) {
     // Computer starting.

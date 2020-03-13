@@ -1,6 +1,6 @@
-/*
-Controls event listeners and display for our Tic-tac-toe game.
-*/
+/**
+ * Controls event listeners and display for our Tic-tac-toe game.
+ */
 
 // Imports
 import { makeMove } from './modules/gameLogic.js';
@@ -26,9 +26,10 @@ resetButton.onclick = reset;
 let game = {
     board: [0, 0, 0, 0, 0, 0, 0, 0, 0],
     moves: 0,
-    winner: -1, // Value for testing if there is a winner.
-    // -1: no winner, 0: draw, 1: player1 wins, 2: player2 wins.
-    winningPositions: [],
+    winner: 0, // Value for testing if there is a winner.
+    // -1: draw, 0: no winner, 1: player1 wins, 2: player2 wins.
+    winningPositions: [], // Board positions that resulted in a win.
+    // Used for highlighting winning tokens.
     playerTurn: 1, // Player 1 will start.
     p1Wins: 0,
     p2Wins: 0,
@@ -36,22 +37,46 @@ let game = {
     rounds: 0,
 
     getRows: function() {
-        let row0 = [this.board[0], this.board[1], this.board[2]];
-        let row1 = [this.board[3], this.board[4], this.board[5]];
-        let row2 = [this.board[6], this.board[7], this.board[8]];
+        let row0 = {
+            positions: [0, 1, 2],
+            values: [this.board[0], this.board[1], this.board[2]]
+        };
+        let row1 = {
+            positions: [3, 4, 5],
+            values: [this.board[3], this.board[4], this.board[5]]
+        };
+        let row2 = {
+            positions: [6, 7, 8],
+            values: [this.board[6], this.board[7], this.board[8]]
+        };
         return [row0, row1, row2];
     },
 
     getColumns: function() {
-        let column0 = [this.board[0], this.board[3], this.board[6]];
-        let column1 = [this.board[1], this.board[4], this.board[7]];
-        let column2 = [this.board[2], this.board[5], this.board[8]];
+        let column0 = {
+            positions: [0, 3, 6],
+            values: [this.board[0], this.board[3], this.board[6]]
+        };
+        let column1 = {
+            positions: [1, 4, 7],
+            values: [this.board[1], this.board[4], this.board[7]]
+        };
+        let column2 = {
+            positions: [2, 5, 8],
+            values: [this.board[2], this.board[5], this.board[8]]
+        };
         return [column0, column1, column2];
     },
 
     getDiagonals: function() {
-        let diagonal0 = [this.board[0], this.board[4], this.board[8]];
-        let diagonal1 = [this.board[2], this.board[4], this.board[6]];
+        let diagonal0 = {
+            positions: [0, 4, 8],
+            values: [this.board[0], this.board[4], this.board[8]]
+        };
+        let diagonal1 = {
+            positions: [2, 4, 6],
+            values: [this.board[2], this.board[4], this.board[6]]
+        };
         return [diagonal0, diagonal1];
     },
 
@@ -74,29 +99,28 @@ let game = {
 
 modeSelector(); // Adds game.mode with default setting.
 
-// Select mode.
 function modeSelector() {
     game.mode = parseInt(newGameSelector.value);
 }
 
 // Make a move and check for winner when a game button is pressed.
 function pressed(event) {
-    let position = event.target.value;
-    event.target.disabled = true;
+    let targetButton = event.target;
+    let position = targetButton.value;
+    targetButton.disabled = true;
 
     // Place 'X' or 'O' on board.
     let symbol;
-    if (game.playerTurn == 1) {
+    if (game.playerTurn === 1) {
         symbol = 'X';
     } else {
         symbol = 'O';
     }
-    event.target.innerHTML = symbol;
+    targetButton.innerHTML = symbol;
 
     makeMove(game, position);
 
-    if (game.winner !== -1) {
-        // If there is a winner.
+    if (game.winner) {
         for (let button of gameButtons) {
             button.disabled = true;
             button.style.color = 'grey';
@@ -109,7 +133,7 @@ function pressed(event) {
             }
         }
 
-        if (game.winner === 0) {
+        if (game.winner === -1) {
             document.getElementById('playerStatus').innerHTML = 'Draw!';
         } else {
             document.getElementById(
@@ -122,8 +146,9 @@ function pressed(event) {
         document.getElementById('p2Wins').innerHTML = game.p2Wins;
         document.getElementById('draws').innerHTML = game.draws;
         document.getElementById('rounds').innerHTML = game.rounds;
-    } else {
-        // If there is no winner.
+    }
+    // If there is no winner.
+    else {
         // Update the displayed turn counter.
         document.getElementById(
             'playerStatus'
@@ -139,6 +164,7 @@ function pressed(event) {
 function makeAIMove() {
     let position;
 
+    // Get position for the move.
     if (game.mode === 1) {
         position = AI1_Move(game);
     } else if (game.mode === 2) {
@@ -173,7 +199,7 @@ function newGame() {
 function reset() {
     game.board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     game.moves = 0;
-    game.winner = -1;
+    game.winner = 0;
     game.winningPositions = [];
 
     document.getElementById(

@@ -6,38 +6,21 @@
  */
 import { AI1_Move } from './AI1.js';
 
-// Our game object is below for reference.
-// let game = {
-//   board: [0, 0, 0, 0, 0, 0, 0, 0, 0],
-//   moves: 0,
-//   winner: -1, // Value for testing if there is a winner.
-//   // -1: no winner, 0: draw, 1: player1 wins, 2: player2 wins.
-//   playerTurn: 1, // Player 1 will start.
-//   players: 2, // Number of user players (1 or 2).
-//   p1Wins: 0,
-//   p2Wins: 0,
-//   draws: 0,
-//   rounds: 0
-// };
-
 /**
- * Move function for AI2 (Medium)
+ * Move function for AI2 (MEDIUM)
  */
 function AI2_Move(game) {
     let position;
-    let tempPosition;
 
     // First check for a winning move.
-    tempPosition = findNearComplete(game, 2);
-    if (tempPosition !== -1) {
-        position = tempPosition;
+    position = findNearComplete(game, 2);
+    if (position !== -1) {
         return position;
     }
 
-    // If no winning move check if opponent has a winning move.
-    tempPosition = findNearComplete(game, 1);
-    if (tempPosition !== -1) {
-        position = tempPosition;
+    // Then check if opponent has a winning move.
+    position = findNearComplete(game, 1);
+    if (position !== -1) {
         return position;
     }
 
@@ -49,49 +32,54 @@ function AI2_Move(game) {
 /**
  * Searches for a row, column or diagonal that is one move away from being
  * completed, a "near complete".
+ *
+ * @returns The value of the empty position in the "near complete", returns -1
+ * if no "near complete" is found.
  */
 function findNearComplete(game, player) {
-    // Variable that will contain the position of the empty square in the
-    // case where we find a near complete, -1 if none found.
     let emptyPosition = -1;
-    let checkPosition;
-    let check1;
-    let check2;
-    let check3;
+    let checkValues, checkPosition;
 
     // Check rows, columns and diagonals.
-    let i = 0;
-    for (let set of game.getAll()) {
-        check1 = set[0];
-        check2 = set[1];
-        check3 = set[2];
-        checkPosition = checkNearComplete(check1, check2, check3);
-        if (checkPosition !== 0) {
-            if (i < 3) {
-                emptyPosition = checkPosition - 1 + i * 3;
-            } else if (3 <= i && i < 6) {
-                emptyPosition = (checkPosition - 1) * 3 + (i - 3);
-            } else if (i === 6) {
-                emptyPosition = (checkPosition - 1) * 4;
-            } else {
-                emptyPosition = 2 + (checkPosition - 1) * 2;
-            }
-            return emptyPosition;
+    for (let checkObj of game.getAll()) {
+        checkValues = checkObj.values;
+
+        checkPosition = checkNearComplete(checkValues);
+
+        if (checkPosition !== -1) {
+            emptyPosition = checkObj.positions[checkPosition];
         }
-        i++;
     }
 
     return emptyPosition;
 
-    function checkNearComplete(check1, check2, check3) {
-        if (check1 == player && check2 == player && check3 == 0) {
-            return 3;
-        } else if (check1 == player && check2 == 0 && check3 == player) {
+    /**
+     * Checks a set of values to see if they are nearly complete.
+     *
+     * @returns the relative position of the empty value, if the set is not
+     * nearly complete returns -1.
+     */
+    function checkNearComplete(checkValues) {
+        if (
+            checkValues[0] == player &&
+            checkValues[1] == player &&
+            checkValues[2] == 0
+        ) {
             return 2;
-        } else if (check1 == 0 && check2 == player && check3 == player) {
+        } else if (
+            checkValues[0] == player &&
+            checkValues[1] == 0 &&
+            checkValues[2] == player
+        ) {
             return 1;
-        } else {
+        } else if (
+            checkValues[0] == 0 &&
+            checkValues[1] == player &&
+            checkValues[2] == player
+        ) {
             return 0;
+        } else {
+            return -1;
         }
     }
 }
