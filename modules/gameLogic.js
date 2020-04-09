@@ -9,7 +9,7 @@ function checkThree(checkValues, game) {
   return false;
 }
 
-function checkForWinner(game) {
+export function checkForWinner(game) {
   let checkValues;
 
   game.getAll().forEach((checkObj) => {
@@ -23,12 +23,12 @@ function checkForWinner(game) {
   });
 
   // Check if it is a draw.
-  if (game.moves === 9) {
+  if (game.winner === 0 && game.moves === 9) {
     game.winner = -1;
   }
 }
 
-function makeMove(game, position) {
+export function makeMove(game, position) {
   game.board[position] = game.playerTurn;
 
   // Iterate move count.
@@ -55,5 +55,3 @@ function makeMove(game, position) {
     }
   }
 }
-
-export { makeMove, checkForWinner };
