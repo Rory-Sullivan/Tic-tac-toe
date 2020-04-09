@@ -40,7 +40,17 @@
         "error",
         "always"
       ],
-      "no-param-reassign": "off"
+      "no-param-reassign": "off",
+      "camelcase": [
+        "error",
+        {
+          "allow": [
+            "AI1_Move",
+            "AI2_Move",
+            "AI3_Move"
+          ]
+        }
+      ]
     }
   },
   "prettier": {
