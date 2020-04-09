@@ -1,0 +1,48 @@
+{
+  "name": "tic-tac-toewebapp",
+  "version": "1.0.0",
+  "description": "Play tic-tac-toe.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rory-Sullivan/Tic-tac-toe.git"
+  },
+  "author": "Rory Sullivan <codingrory@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rory-Sullivan/Tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/Rory-Sullivan/Tic-tac-toe#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^2.0.4"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es6": true
+    },
+    "extends": [
+      "airbnb-base",
+      "plugin:prettier/recommended"
+    ],
+    "globals": {},
+    "rules": {
+      "no-unused-vars": "warn",
+      "import/extensions": [
+        "error",
+        "always"
+      ]
+    }
+  },
+  "prettier": {
+    "singleQuote": true
+  }
+}
