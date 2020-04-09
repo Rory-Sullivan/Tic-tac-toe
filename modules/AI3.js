@@ -14,115 +14,102 @@ import { findNearComplete } from './AI2.js';
  * Move function for AI3 (HARD)
  */
 function AI3_Move(game) {
-    // Computer starting.
-    if (game.moves == 0) {
-        // Make a random move.
-        return AI1_Move(game);
-    } else if (game.moves === 2) {
-        // If centre is open take it.
-        if (game.board[4] === 0) {
-            return 4;
-        }
-
-        // Else we can play anywhere.
-        else {
-            return AI1_Move(game);
-        }
+  // Computer starting.
+  if (game.moves == 0) {
+    // Make a random move.
+    return AI1_Move(game);
+  }
+  if (game.moves === 2) {
+    // If centre is open take it.
+    if (game.board[4] === 0) {
+      return 4;
     }
 
-    // User starting.
-    else if (game.moves === 1) {
-        // User plays centre. Play a corner.
-        if (game.board[4] === 1) {
-            let corners = [0, 2, 6, 8];
-            return randMoveFromList(corners);
-        }
+    // Else we can play anywhere.
 
-        // Else play centre.
-        else {
-            return 4;
-        }
+    return AI1_Move(game);
+  }
+
+  // User starting.
+  if (game.moves === 1) {
+    // User plays centre. Play a corner.
+    if (game.board[4] === 1) {
+      const corners = [0, 2, 6, 8];
+      return randMoveFromList(corners);
     }
 
-    // If we are further on in the game we play with our strategy.
-    else {
-        let position;
+    // Else play centre.
 
-        // First check if the computer has a winning move and play.
-        position = findNearComplete(game, 2);
-        if (position !== -1) {
-            return position;
-        }
+    return 4;
+  }
 
-        // Check if opponent has a winning move and block.
-        position = findNearComplete(game, 1);
-        if (position !== -1) {
-            return position;
-        }
+  // If we are further on in the game we play with our strategy.
 
-        // If opponent has played an edge with adjacent corners empty we should
-        // play one of those corners.
-        if (game.board[1] === 1 && game.board[0] === 0 && game.board[2] === 0) {
-            return randMoveFromList([0, 2]);
-        } else if (
-            game.board[5] === 1 &&
-            game.board[2] === 0 &&
-            game.board[8] === 0
-        ) {
-            return randMoveFromList([2, 8]);
-        } else if (
-            game.board[7] === 1 &&
-            game.board[8] === 0 &&
-            game.board[6] === 0
-        ) {
-            return randMoveFromList([6, 8]);
-        } else if (
-            game.board[3] === 1 &&
-            game.board[0] === 0 &&
-            game.board[6] === 0
-        ) {
-            return randMoveFromList([0, 6]);
-        }
+  let position;
 
-        // Otherwise play an edge if one is available.
-        else {
-            let emptyEdges = [];
-            if (game.board[1] === 0) {
-                emptyEdges.push(1);
-            }
-            if (game.board[3] === 0) {
-                emptyEdges.push(3);
-            }
-            if (game.board[5] === 0) {
-                emptyEdges.push(5);
-            }
-            if (game.board[7] === 0) {
-                emptyEdges.push(7);
-            }
+  // First check if the computer has a winning move and play.
+  position = findNearComplete(game, 2);
+  if (position !== -1) {
+    return position;
+  }
 
-            if (emptyEdges.length !== 0) {
-                return randMoveFromList(emptyEdges);
-            }
+  // Check if opponent has a winning move and block.
+  position = findNearComplete(game, 1);
+  if (position !== -1) {
+    return position;
+  }
 
-            // Otherwise play any available move.
-            else {
-                for (let i = 0; i < 9; i++) {
-                    if (game.board[i] === 0) {
-                        return i;
-                    }
-                }
-            }
-        }
+  // If opponent has played an edge with adjacent corners empty we should
+  // play one of those corners.
+  if (game.board[1] === 1 && game.board[0] === 0 && game.board[2] === 0) {
+    return randMoveFromList([0, 2]);
+  }
+  if (game.board[5] === 1 && game.board[2] === 0 && game.board[8] === 0) {
+    return randMoveFromList([2, 8]);
+  }
+  if (game.board[7] === 1 && game.board[8] === 0 && game.board[6] === 0) {
+    return randMoveFromList([6, 8]);
+  }
+  if (game.board[3] === 1 && game.board[0] === 0 && game.board[6] === 0) {
+    return randMoveFromList([0, 6]);
+  }
+
+  // Otherwise play an edge if one is available.
+
+  const emptyEdges = [];
+  if (game.board[1] === 0) {
+    emptyEdges.push(1);
+  }
+  if (game.board[3] === 0) {
+    emptyEdges.push(3);
+  }
+  if (game.board[5] === 0) {
+    emptyEdges.push(5);
+  }
+  if (game.board[7] === 0) {
+    emptyEdges.push(7);
+  }
+
+  if (emptyEdges.length !== 0) {
+    return randMoveFromList(emptyEdges);
+  }
+
+  // Otherwise play any available move.
+
+  for (let i = 0; i < 9; i++) {
+    if (game.board[i] === 0) {
+      return i;
     }
+  }
 
-    // If we make it this far something is wrong.
-    throw 'Error: Did not return a move from AI3_Move';
+  // If we make it this far something is wrong.
+  throw 'Error: Did not return a move from AI3_Move';
 }
 
 function randMoveFromList(list) {
-    let len = list.length;
-    let randSelection = Math.floor(Math.random() * len);
-    return list[randSelection];
+  const len = list.length;
+  const randSelection = Math.floor(Math.random() * len);
+  return list[randSelection];
 }
 
 export { AI3_Move };

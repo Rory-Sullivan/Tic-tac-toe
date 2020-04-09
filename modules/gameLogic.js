@@ -3,63 +3,62 @@
  */
 
 function makeMove(game, position) {
-    game.board[position] = game.playerTurn;
+  game.board[position] = game.playerTurn;
 
-    // Iterate move count.
-    // Do this before checking for a winner so that we can check for a draw.
-    game.moves++;
+  // Iterate move count.
+  // Do this before checking for a winner so that we can check for a draw.
+  game.moves++;
 
-    checkForWinner(game);
+  checkForWinner(game);
 
-    // Swap players.
-    // Note we must do this after checking for a winner.
-    if (game.playerTurn === 1) {
-        game.playerTurn = 2;
+  // Swap players.
+  // Note we must do this after checking for a winner.
+  if (game.playerTurn === 1) {
+    game.playerTurn = 2;
+  } else {
+    game.playerTurn = 1;
+  }
+
+  // If there is a winner update our win counters.
+  if (game.winner) {
+    game.rounds++;
+    if (game.winner === -1) {
+      game.draws++;
     } else {
-        game.playerTurn = 1;
+      game[`p${game.winner}Wins`]++;
     }
-
-    // If there is a winner update our win counters.
-    if (game.winner) {
-        game.rounds++;
-        if (game.winner === -1) {
-            game.draws++;
-        } else {
-            game[`p${game.winner}Wins`]++;
-        }
-    }
+  }
 }
 
 function checkForWinner(game) {
-    let checkValues;
+  let checkValues;
 
-    // Check rows, columns and diagonals for a winner.
-    for (let checkObj of game.getAll()) {
-        checkValues = checkObj.values;
+  // Check rows, columns and diagonals for a winner.
+  for (const checkObj of game.getAll()) {
+    checkValues = checkObj.values;
 
-        if (checkThree(checkValues)) {
-            game.winner = game.playerTurn;
-            game.winningPositions = checkObj.positions;
-            return; // So that we don't check for a draw.
-        }
+    if (checkThree(checkValues)) {
+      game.winner = game.playerTurn;
+      game.winningPositions = checkObj.positions;
+      return; // So that we don't check for a draw.
     }
+  }
 
-    // Check if it is a draw.
-    if (game.moves === 9) {
-        game.winner = -1;
-        return;
-    }
+  // Check if it is a draw.
+  if (game.moves === 9) {
+    game.winner = -1;
+  }
 
-    function checkThree(checkValues) {
-        if (
-            checkValues[0] === checkValues[1] &&
-            checkValues[0] === checkValues[2] &&
-            checkValues[0] === game.playerTurn
-        ) {
-            return true;
-        }
-        return false;
+  function checkThree(checkValues) {
+    if (
+      checkValues[0] === checkValues[1] &&
+      checkValues[0] === checkValues[2] &&
+      checkValues[0] === game.playerTurn
+    ) {
+      return true;
     }
+    return false;
+  }
 }
 
 export { makeMove, checkForWinner };

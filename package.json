@@ -2,7 +2,7 @@
   "name": "tic-tac-toewebapp",
   "version": "1.0.0",
   "description": "Play tic-tac-toe.",
-  "main": "index.html",
+  "browser": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -39,7 +39,8 @@
       "import/extensions": [
         "error",
         "always"
-      ]
+      ],
+      "no-param-reassign": "off"
     }
   },
   "prettier": {
