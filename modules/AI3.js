@@ -1,21 +1,21 @@
+import AI1_Move from './AI1.js';
+import { findNearComplete } from './AI2.js';
+
+function randMoveFromList(list) {
+  const len = list.length;
+  const randSelection = Math.floor(Math.random() * len);
+  return list[randSelection];
+}
+
 /**
  * Artificial intelligence for the user to play against.
  * AI3 (HARD)
  * This AI plays so that it cannot be beaten.  For more info check the
  * documentation.
  */
-/**
- * TODO: Write documentation for this.
- */
-import { AI1_Move } from './AI1.js';
-import { findNearComplete } from './AI2.js';
-
-/**
- * Move function for AI3 (HARD)
- */
-function AI3_Move(game) {
+export default function AI3_Move(game) {
   // Computer starting.
-  if (game.moves == 0) {
+  if (game.moves === 0) {
     // Make a random move.
     return AI1_Move(game);
   }
@@ -26,7 +26,6 @@ function AI3_Move(game) {
     }
 
     // Else we can play anywhere.
-
     return AI1_Move(game);
   }
 
@@ -75,7 +74,6 @@ function AI3_Move(game) {
   }
 
   // Otherwise play an edge if one is available.
-
   const emptyEdges = [];
   if (game.board[1] === 0) {
     emptyEdges.push(1);
@@ -95,21 +93,12 @@ function AI3_Move(game) {
   }
 
   // Otherwise play any available move.
-
-  for (let i = 0; i < 9; i++) {
+  for (let i = 0; i < 9; i += 1) {
     if (game.board[i] === 0) {
       return i;
     }
   }
 
   // If we make it this far something is wrong.
-  throw 'Error: Did not return a move from AI3_Move';
+  throw new Error('Error: Did not return a move from AI3_Move');
 }
-
-function randMoveFromList(list) {
-  const len = list.length;
-  const randSelection = Math.floor(Math.random() * len);
-  return list[randSelection];
-}
-
-export { AI3_Move };
