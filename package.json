@@ -48,7 +48,8 @@
           "allow": [
             "AI1_Move",
             "AI2_Move",
-            "AI3_Move"
+            "AI3_Move",
+            "AI4_Move"
           ]
         }
       ]
