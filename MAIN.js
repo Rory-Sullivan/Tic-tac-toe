@@ -1,9 +1,9 @@
-import Game from './modules/Game.js';
-import { makeMove } from './modules/gameLogic.js';
-import AI1_Move from './modules/AI1.js';
-import { AI2_Move } from './modules/AI2.js';
-import AI3_Move from './modules/AI3.js';
-import AI4_Move from './modules/AI4.js';
+import Game from './gameModel/Game.js';
+import { makeMove } from './gameModel/gameLogic.js';
+import AI1_Move from './gameModel/AI1.js';
+import { AI2_Move } from './gameModel/AI2.js';
+import AI3_Move from './gameModel/AI3.js';
+import AI4_Move from './gameModel/AI4.js';
 
 const gameButtons = document.querySelectorAll('#board button');
 const newGameSelector = document.getElementById('gameMode');
