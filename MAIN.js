@@ -3,6 +3,7 @@ import { makeMove } from './modules/gameLogic.js';
 import AI1_Move from './modules/AI1.js';
 import { AI2_Move } from './modules/AI2.js';
 import AI3_Move from './modules/AI3.js';
+import AI4_Move from './modules/AI4.js';
 
 const gameButtons = document.querySelectorAll('#board button');
 const newGameSelector = document.getElementById('gameMode');
@@ -12,16 +13,27 @@ const resetButton = document.getElementById('reset');
 function makeAIMove() {
   let position;
 
-  // Get position for the move.
-  if (game.mode === 1) {
-    position = AI1_Move(game);
-  } else if (game.mode === 2) {
-    position = AI2_Move(game);
-  } else if (game.mode === 3) {
-    position = AI3_Move(game);
+  switch (game.mode) {
+    case 1:
+      position = AI1_Move(game);
+      break;
+
+    case 2:
+      position = AI2_Move(game);
+      break;
+
+    case 3:
+      position = AI3_Move(game);
+      break;
+
+    case 4:
+      position = AI4_Move(game);
+      break;
+
+    default:
+      throw new Error('Not a valid game mode');
   }
 
-  // Trigger the appropriate button.
   gameButtons[position].click();
 }
 
