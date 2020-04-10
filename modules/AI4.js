@@ -15,33 +15,36 @@ function miniMaxifyWinner(winner) {
 
 function minimax(game) {
   const scores = [];
-  game.board.forEach((position) => {
-    if (position === 0) {
-      position = game.playerTurn;
+  for (let i = 0; i < game.board.length; i += 1) {
+    if (game.board[i] === 0) {
+      game.board[i] = game.playerTurn;
       game.moves += 1;
       checkForWinner(game);
 
       if (game.winner) {
-        scores.push({ position, val: miniMaxifyWinner(game.winner) });
+        scores.push({ position: i, val: miniMaxifyWinner(game.winner) });
       } else {
         game.playerTurn = game.playerTurn === 1 ? 2 : 1;
-        scores.push(minimax(game));
+        scores.push({ position: i, val: minimax(game).val });
         game.playerTurn = game.playerTurn === 1 ? 2 : 1;
       }
 
       // As we are not copying the game object it is important to reset the
       // values.
-      position = 0;
+      game.board[i] = 0;
       game.moves -= 1;
       game.winner = 0;
     }
-  });
+  }
+
+  scores.sort((x, y) => x.val - y.val);
+  // console.log(scores);
 
   // Player 1 is the maximising player, player 2 is the minimising player.
   if (game.playerTurn === 1) {
-    return Math.max(scores, (score) => score.val);
+    return scores[scores.length - 1];
   }
-  return Math.min(scores, (score) => score.val);
+  return scores[0];
 }
 
 /**
