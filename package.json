@@ -4,9 +4,6 @@
   "description": "Play tic-tac-toe.",
   "browser": "index.html",
   "type": "module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Rory-Sullivan/Tic-tac-toe.git"
