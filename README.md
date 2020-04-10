@@ -14,15 +14,15 @@ A little about the different levels that you can play against and how they work.
 ## Easy
 
 When playing on easy mode the computer simply plays a random move from any
-available move. Since tic-tac-toe is a relatively simple game some times it
-gets lucky and plays well but most of the time it is easy to beat.
+available move. Since tic-tac-toe is a relatively simple game sometimes it gets
+lucky and plays well but most of the time it is easy to beat.
 
 ## Medium
 
 In this mode the computer will try to stop you from completing a line of three
 in a row or will complete its own line of three if there is one available.
 Otherwise it will play randomly. While it is unlikely that the computer will
-win against a human player a reasonable level of skill is required to beat it.
+win against a human player, a reasonable level of skill is required to beat it.
 
 ## Hard
 
@@ -38,4 +38,4 @@ This AI uses the [minimax algorithm](https://en.wikipedia.org/wiki/Minimax) to
 decide on where to play. Since tic-tac-toe is a simple game this results in
 perfect play from the AI, playing against it you can only ever lose or draw. As
 a result of how the algorithm works the computer will always play the same move
-in a given situation, this make for not very interesting game play.
+in a given situation, this makes for not very interesting game play.
